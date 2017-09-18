@@ -1,34 +1,21 @@
 #ifndef TOOLS_H_
 #define TOOLS_H_
+
 #include <vector>
 #include "Eigen/Dense"
 
-using Eigen::MatrixXd;
-using Eigen::VectorXd;
-using namespace std;
-
-class Tools {
-public:
+namespace ExtendedKF {
+namespace Tools {
   /**
-  * Constructor.
+  * A helper function to calculate RMSE.
   */
-  Tools();
+  Eigen::VectorXd CalculateRMSE(const std::vector<Eigen::VectorXd> &estimations, const std::vector<Eigen::VectorXd> &ground_truth);
 
   /**
-  * Destructor.
+  * A helper function to calculate Jacobians.
   */
-  virtual ~Tools();
-
-  /**
-  * A helper method to calculate RMSE.
-  */
-  VectorXd CalculateRMSE(const vector<VectorXd> &estimations, const vector<VectorXd> &ground_truth);
-
-  /**
-  * A helper method to calculate Jacobians.
-  */
-  MatrixXd CalculateJacobian(const VectorXd& x_state);
-
+  Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state); 
+};
 };
 
 #endif /* TOOLS_H_ */
